@@ -52,6 +52,9 @@ router.post('/local-signup', function(req, res, next) {
 
   var username  = req.body.username;
   var password  = req.body.password;
+  console.log("username: ", username);
+  console.log("password: ", password);
+  console.log("req: ", req);
 
   new User({username:username})
     .fetch()
