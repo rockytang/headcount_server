@@ -39,9 +39,13 @@ router.get('/google/callback', passport.authenticate('google', { failureRedirect
 router.post('/local', passport.authenticate('local', { failureRedirect: '#/signup' }), function(req, res) {
   var username = req.body.username;
 
+  console.log("inside auth local, req.body: ", req.body);
+
   new User({username: username})
   .fetch()
   .then(function(model) {
+    console.log("inside auth local, found user! model: ", model);
+
     handleAuth(req, res, username, model.attributes.id);
   });
 });
